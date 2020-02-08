@@ -24,13 +24,53 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#~insertOneWriteOpResult
 
    // findOne
-    db.collection('users').findOne({ name: "jane" }, (error, result) => {
+   //  db.collection('users').findOne({ name: "jane" }, (error, result) => {
+   //      if (error) {
+   //          return console.log("Unable to get user")
+   //      }
+   //
+   //      console.log(result)
+   //  })
+
+    // find returns a cursor to the pointer of the document in the database(cursor -> pointer to data)
+
+    // db.collection("tasks").findOne({ _id: new ObjectId('5e3af534a2f4046a826e556e')}, (error, result) => {
+    //     if (error) {
+    //         return console.log("Unable to find document")
+    //     }
+    //
+    //     console.log(result)
+    //
+    // })
+
+    db.collection('tasks').find({ completed: false }).toArray((error, result) => {
         if (error) {
-            return console.log("Unable to get user")
+            return console.log("Unable to find results")
         }
 
         console.log(result)
     })
+
+
+
+
+
+
+    // db.collection('users').find({ age:25 }).toArray((error, result) => {
+    //     if (error) {
+    //         return console.log("Unable to find Age")
+    //     }
+    //
+    //     console.log(result)
+    // })
+    //
+    // db.collection('users').find({ age:25 }).count((error, result) => {
+    //     if (error) {
+    //         return console.log("Unable to find Age")
+    //     }
+    //
+    //     console.log(result)
+    // })
 
 
 })
