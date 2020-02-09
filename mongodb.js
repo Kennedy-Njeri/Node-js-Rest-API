@@ -23,88 +23,99 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     const db = client.db(databaseName)
     // http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#~insertOneWriteOpResult
 
-    // updateOne https://docs.mongodb.com/manual/reference/operator/update/
-    // db.collection('users').updateOne({
-    //     _id: new ObjectId("5e3af0d00da68d6a77195f9f")
-    // }, {
-    //     $inc: {
-    //         age: 1
-    //     }
-    //     // $set: {
-    //     //     name: 'Nas'
-    //     // }
-    // }).then(result => {
-    //     console.log(result)
-    // }).catch(error => {
-    //     console.log(error)
-    // })
-
-    db.collection('tasks').updateMany({
-        completed: false
-    }, {
-        $set: {
-            completed: true
-        }
-    }).then(result => {
-        console.log(result.modifiedCount)
-    }).catch(error => {
-        console.log(error)
-    })
 
 
 
 
 
 
-   // findOne
-   //  db.collection('users').findOne({ name: "jane" }, (error, result) => {
-   //      if (error) {
-   //          return console.log("Unable to get user")
-   //      }
-   //
-   //      console.log(result)
-   //  })
 
-    // find returns a cursor to the pointer of the document in the database(cursor -> pointer to data)
 
-    // db.collection("tasks").findOne({ _id: new ObjectId('5e3af534a2f4046a826e556e')}, (error, result) => {
-    //     if (error) {
-    //         return console.log("Unable to find document")
-    //     }
-    //
-    //     console.log(result)
-    //
-    // })
-
-    // db.collection('tasks').find({ completed: false }).toArray((error, result) => {
-    //     if (error) {
-    //         return console.log("Unable to find results")
-    //     }
-    //
-    //     console.log(result)
-    // })
-
-    // db.collection('users').find({ age:25 }).toArray((error, result) => {
-    //     if (error) {
-    //         return console.log("Unable to find Age")
-    //     }
-    //
-    //     console.log(result)
-    // })
-    //
-    // db.collection('users').find({ age:25 }).count((error, result) => {
-    //     if (error) {
-    //         return console.log("Unable to find Age")
-    //     }
-    //
-    //     console.log(result)
-    // })
 
 
 })
 
 
 
+// updateOne https://docs.mongodb.com/manual/reference/operator/update/
+// db.collection('users').updateOne({
+//     _id: new ObjectId("5e3af0d00da68d6a77195f9f")
+// }, {
+//     $inc: {
+//         age: 1
+//     }
+//     // $set: {
+//     //     name: 'Nas'
+//     // }
+// }).then(result => {
+//     console.log(result)
+// }).catch(error => {
+//     console.log(error)
+// })
+
+// db.collection('tasks').updateMany({
+//     completed: false
+// }, {
+//     $set: {
+//         completed: true
+//     }
+// }).then(result => {
+//     console.log(result.modifiedCount)
+// }).catch(error => {
+//     console.log(error)
+// })
+
+// findOne
+//  db.collection('users').findOne({ name: "jane" }, (error, result) => {
+//      if (error) {
+//          return console.log("Unable to get user")
+//      }
+//
+//      console.log(result)
+//  })
+
+// find returns a cursor to the pointer of the document in the database(cursor -> pointer to data)
+
+// db.collection("tasks").findOne({ _id: new ObjectId('5e3af534a2f4046a826e556e')}, (error, result) => {
+//     if (error) {
+//         return console.log("Unable to find document")
+//     }
+//
+//     console.log(result)
+//
+// })
+
+// db.collection('tasks').find({ completed: false }).toArray((error, result) => {
+//     if (error) {
+//         return console.log("Unable to find results")
+//     }
+//
+//     console.log(result)
+// })
+
+// db.collection('users').find({ age:25 }).toArray((error, result) => {
+//     if (error) {
+//         return console.log("Unable to find Age")
+//     }
+//
+//     console.log(result)
+// })
+//
+// db.collection('users').find({ age:25 }).count((error, result) => {
+//     if (error) {
+//         return console.log("Unable to find Age")
+//     }
+//
+//     console.log(result)
+// })
+
+
+
+
+
+
+
+// Insert
 // db.collection('users').insertOne({
 //     _id: id,
 //     name: "vic",
