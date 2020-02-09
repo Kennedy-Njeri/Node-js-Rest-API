@@ -23,6 +23,26 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     const db = client.db(databaseName)
     // http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#~insertOneWriteOpResult
 
+    // updateOne
+    const updatePromise = db.collection('users').updateOne({
+        _id: new ObjectId("5e3af0d00da68d6a77195f9f")
+    }, {
+        $set: {
+            name: 'Nas'
+        }
+    })
+
+    updatePromise.then(result => {
+        console.log(result)
+    }).catch(error => {
+        console.log(error)
+    })
+
+
+
+
+
+
    // findOne
    //  db.collection('users').findOne({ name: "jane" }, (error, result) => {
    //      if (error) {
@@ -43,18 +63,13 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     //
     // })
 
-    db.collection('tasks').find({ completed: false }).toArray((error, result) => {
-        if (error) {
-            return console.log("Unable to find results")
-        }
-
-        console.log(result)
-    })
-
-
-
-
-
+    // db.collection('tasks').find({ completed: false }).toArray((error, result) => {
+    //     if (error) {
+    //         return console.log("Unable to find results")
+    //     }
+    //
+    //     console.log(result)
+    // })
 
     // db.collection('users').find({ age:25 }).toArray((error, result) => {
     //     if (error) {
