@@ -24,15 +24,13 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#~insertOneWriteOpResult
 
     // updateOne
-    const updatePromise = db.collection('users').updateOne({
+    db.collection('users').updateOne({
         _id: new ObjectId("5e3af0d00da68d6a77195f9f")
     }, {
         $set: {
             name: 'Nas'
         }
-    })
-
-    updatePromise.then(result => {
+    }).then(result => {
         console.log(result)
     }).catch(error => {
         console.log(error)
