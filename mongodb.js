@@ -24,6 +24,23 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // http://mongodb.github.io/node-mongodb-native/3.5/api/Collection.html#~insertOneWriteOpResult
 
 
+    // Delete
+
+    // db.collection('users').deleteMany({
+    //     age: 27
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+    db.collection('tasks').deleteOne({
+        description: "Apply jobs"
+    }).then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
+    })
 
 
 
