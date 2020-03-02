@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const validator = require('validator')
+//const validator = require('validator')
 
 mongoose.connect('mongodb://127.0.0.1:27018/task-manager-api', {
     useNewUrlParser: true,
@@ -11,54 +11,31 @@ mongoose.connect('mongodb://127.0.0.1:27018/task-manager-api', {
 // validators- built in https://mongoosejs.com/docs/validation.html
 // npm validator
 
-const User = mongoose.model('User', {
-    name: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    email: {
-        type: String,
-        required: true,
-        trim: true,
-        lowercase: true,
-        validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error("Email is invalid!")
-            }
-        }
-    },
-    age: {
-        type: Number,
-        default: 0,
-        validate(value) {
-            if (value < 0) {
-                throw new Error("Age must be a positive number")
-            }
-        }
-    }
-})
 
 
-const me = new User({
-    name: 'claire',
-    email: 'kennedy@gmail.com',
-    age: 22
-})
-
-me.save().then(() => {
-    console.log(me)
-}).catch((error) => {
-    console.log("Error", error)
-})
+// const me = new User({
+//     name: 'vic',
+//     email: 'vic@gmail.com',
+//     age: 22,
+//     password: 'joemwas123'
+// })
+//
+// me.save().then(() => {
+//     console.log(me)
+// }).catch((error) => {
+//     console.log("Error", error)
+// })
 
 
 const Task = mongoose.model('Task', {
     description: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     completed: {
-        type: Boolean
+        type: Boolean,
+        default: false
     }
 })
 
