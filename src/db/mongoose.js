@@ -3,10 +3,12 @@ const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://127.0.0.1:27018/task-manager-api', {
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
 })
 
 
+// useFindAndModify: false avoid the warning from showing up until mongo addresses the issue
 
 // validators- built in https://mongoosejs.com/docs/validation.html
 // npm validator
