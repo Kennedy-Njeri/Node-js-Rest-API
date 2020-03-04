@@ -14,6 +14,7 @@ app.use(express.json())
 
 
 app.post('/users', async (req, res) => {
+
     const user = new User(req.body)
 
     try {
@@ -30,6 +31,7 @@ app.post('/users', async (req, res) => {
 })
 
 app.get('/users', async (req, res) => {
+
     try {
         const users = await User.find({})
         res.send(users)
@@ -44,19 +46,29 @@ app.get('/users', async (req, res) => {
     // })
 })
 
-app.get('/users/:id', (req, res) => {
+app.get('/users/:id', async (req, res) => {
 
     const _id = req.params.id
 
-    User.findById(_id).then(user => {
+    try {
+        const user = await User.findById(_id)
         if (!user) {
-           return res.status(404).send()
+            return res.status(404).send()
         }
-
         res.send(user)
-    }).catch(error => {
-        res.status(404).send()
-    })
+    } catch (e) {
+        res.status(500).send()
+    }
+
+    // User.findById(_id).then(user => {
+    //     if (!user) {
+    //        return res.status(404).send()
+    //     }
+    //
+    //     res.send(user)
+    // }).catch(error => {
+    //     res.status(404).send()
+    // })
 
 
     console.log(req.params)
