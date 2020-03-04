@@ -13,22 +13,35 @@ app.use(express.json())
 
 
 
-app.post('/users', (req, res) => {
+app.post('/users', async (req, res) => {
     const user = new User(req.body)
 
-    user.save().then(() => {
+    try {
+        await user.save()
         res.status(201).send(user)
-    }).catch(error => {
-        res.status(400).send(error)
-    })
+    } catch (e) {
+        res.status(400).send(e)
+    }
+    // user.save().then(() => {
+    //     res.status(201).send(user)
+    // }).catch(error => {
+    //     res.status(400).send(error)
+    // })
 })
 
-app.get('/users', (req, res) => {
-    User.find({}).then((users) => {
+app.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({})
         res.send(users)
-    }).catch(error => {
-        res.status(500).send()
-    })
+    } catch (e) {
+        res.status(500).send(e)
+    }
+
+    // User.find({}).then((users) => {
+    //     res.send(users)
+    // }).catch(error => {
+    //     res.status(500).send()
+    // })
 })
 
 app.get('/users/:id', (req, res) => {
