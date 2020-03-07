@@ -16,8 +16,24 @@ app.use(userRouter, taskRouter)
 
 
 
-
-
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
+
+// hashing algorithms you cant reverse the process - one way,  with encryption algorithms one can get the original value
+
+const bycrypt = require('bcryptjs')
+
+const myFunction = async () => {
+    const password = 'Kevin254'
+    // rounds determines how many times the hashing algorithms is executed
+    const hashedPassword = await bycrypt.hash(password, 8)
+
+    console.log(password)
+    console.log(hashedPassword)
+
+    const isMatch = await bycrypt.compare(password, hashedPassword)
+    console.log(isMatch)
+}
+
+myFunction()
