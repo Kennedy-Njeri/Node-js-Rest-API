@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
         required: true,
         trim: true,
         lowercase: true,
@@ -41,6 +42,23 @@ const userSchema = new mongoose.Schema({
 
     }})
 
+userSchema.statics.findBycredentials = async (email, password) => {
+    const user = await User.findOne({ email: email})
+
+    if (!user) {
+        throw new Error("Unable to login")
+
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (!isMatch) {
+        throw new Error("Unable to login")
+    }
+
+    return user
+}
+
 
 // we are going to run save() middleware before a user is saved e.g check if there is a plain text password and hash it
 // when the object is passed in the model it is automatically converted into a schema behind the scenes
@@ -52,6 +70,7 @@ const userSchema = new mongoose.Schema({
 // this its the user being saved
 // we call next when we are done running our code
 
+// Hash the plain text before saving
 userSchema.pre('save', async function (next) {
     const user = this
 
