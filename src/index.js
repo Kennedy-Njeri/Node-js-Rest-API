@@ -22,18 +22,35 @@ app.listen(port, () => {
 
 // hashing algorithms you cant reverse the process - one way,  with encryption algorithms one can get the original value
 
-const bycrypt = require('bcryptjs')
+// const bycrypt = require('bcryptjs')
+//
+// const myFunction = async () => {
+//     const password = 'Kevin254'
+//     // rounds determines how many times the hashing algorithms is executed
+//     const hashedPassword = await bycrypt.hash(password, 8)
+//
+//     console.log(password)
+//     console.log(hashedPassword)
+//
+//     const isMatch = await bycrypt.compare(password, hashedPassword)
+//     console.log(isMatch)
+// }
+//
+// myFunction()
+
+const jwt = require('jsonwebtoken')
 
 const myFunction = async () => {
-    const password = 'Kevin254'
-    // rounds determines how many times the hashing algorithms is executed
-    const hashedPassword = await bycrypt.hash(password, 8)
+    const token = await jwt.sign({_id: '1234asde'}, 'thisismytoken', { expiresIn: '7 days'}) //secrete to sign the token that has not been tampered with
+    console.log(token)
 
-    console.log(password)
-    console.log(hashedPassword)
+    // type of token and algorithm used      paylod/body-contains data we provided i.e id    verify the token
+    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxMjM0YXNkZSIsImlhdCI6MTU4Mzg0ODAyNn0.iteByHEM1YcIXRMeLlHr2568N8Pqla95G5ZDwdQgYHY
 
-    const isMatch = await bycrypt.compare(password, hashedPassword)
-    console.log(isMatch)
+    const data = await jwt.verify(token, 'thisismytoken')
+    console.log(data)
+
+
 }
 
 myFunction()
