@@ -7,6 +7,25 @@ const taskRouter = require('./routers/task')
 const app = express()
 const port = process.env.PORT || 3000
 
+// for site maintenance
+app.use((req, res, next) => {
+    res.status(503).send('Site is currently down. Check back soon')
+})
+
+
+
+
+// app.use((req, res, next) => {
+//     if(req.method == 'GET') {
+//         res.send("GET requests are disabled")
+//     } else {
+//         next()
+//     }
+//     // console.log(req.method, req.path)
+//     // next()
+// })
+
+
 // https://httpstatuses.com/
 // parse our incoming json data for use into an object
 app.use(express.json())
@@ -16,9 +35,9 @@ app.use(userRouter, taskRouter)
 
 
 
-app.listen(port, () => {
-    console.log('Server is up on port ' + port)
-})
+// app.listen(port, () => {
+//     console.log('Server is up on port ' + port)
+// })
 
 // hashing algorithms you cant reverse the process - one way,  with encryption algorithms one can get the original value
 

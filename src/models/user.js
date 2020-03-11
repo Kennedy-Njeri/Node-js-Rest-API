@@ -48,6 +48,7 @@ const userSchema = new mongoose.Schema({
         minlength: 7
 
     }})
+
 // method are accessed by instances
 userSchema.methods.generateAuthToken = async function () {
     const user = this
