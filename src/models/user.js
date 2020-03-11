@@ -51,6 +51,7 @@ const userSchema = new mongoose.Schema({
 
 // method are accessed by instances
 userSchema.methods.generateAuthToken = async function () {
+
     const user = this
     const token = jwt.sign({ _id: user._id.toString() }, 'thisisnodejs')
 
@@ -93,6 +94,7 @@ userSchema.statics.findBycredentials = async (email, password) => {
 
 // Hash the plain text before saving
 userSchema.pre('save', async function (next) {
+
     const user = this
 
     if (user.isModified('password')) {

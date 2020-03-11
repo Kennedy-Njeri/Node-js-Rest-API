@@ -18,6 +18,7 @@ const auth = async (req, res, next) => {
 
         // lets route handler run
         next()
+
     } catch (e) {
         res.status(401).send({ error: 'Please authenticate.'})
     }
