@@ -62,7 +62,7 @@ userSchema.methods.generateAuthToken = async function () {
 
 }
 
-// statics are accessed by our models/ model methods
+// statics are accessed by our models/ model methods // allow for defining functions that exist directly on your Model
 userSchema.statics.findBycredentials = async (email, password) => {
 
     const user = await User.findOne({ email: email})
