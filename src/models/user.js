@@ -49,6 +49,21 @@ const userSchema = new mongoose.Schema({
 
     }})
 
+// JSON.stringify is run in the background, our objects are stringify
+// to json method allows us to manipulate what we want back
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
+
+    // remove them so as they cant be seen
+    delete userObject.password
+    delete userObject.tokens
+
+    return userObject
+}
+
+
+
 // method are accessed by instances
 userSchema.methods.generateAuthToken = async function () {
 

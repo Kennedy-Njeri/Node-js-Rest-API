@@ -32,7 +32,11 @@ router.post('/users/login', async (req, res) => {
     try {
         const user = await User.findBycredentials(req.body.email, req.body.password)
         const token = await user.generateAuthToken()
+        // we are supposed to hide hashed password and tokens
+        //res.send({user: user.getPublicProfile(), token}) but instead we use toJSON
+        // when we send an object to res.send it is stringified
         res.send({user, token})
+
     } catch (e) {
         res.status(400).send()
     }

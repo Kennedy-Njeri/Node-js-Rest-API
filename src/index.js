@@ -57,19 +57,31 @@ app.listen(port, () => {
 //
 // myFunction()
 
-const jwt = require('jsonwebtoken')
+// const jwt = require('jsonwebtoken')
+//
+// const myFunction = async () => {
+//     const token = await jwt.sign({_id: '1234asde'}, 'thisismytoken', { expiresIn: '7 days'}) //secrete to sign the token that has not been tampered with
+//     console.log(token)
+//
+//     // type of token and algorithm used      paylod/body-contains data we provided i.e id    verify the token
+//     // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxMjM0YXNkZSIsImlhdCI6MTU4Mzg0ODAyNn0.iteByHEM1YcIXRMeLlHr2568N8Pqla95G5ZDwdQgYHY
+//
+//     const data = await jwt.verify(token, 'thisismytoken')
+//     console.log(data)
+//
+//
+// }
+//
+// myFunction()
 
-const myFunction = async () => {
-    const token = await jwt.sign({_id: '1234asde'}, 'thisismytoken', { expiresIn: '7 days'}) //secrete to sign the token that has not been tampered with
-    console.log(token)
-
-    // type of token and algorithm used      paylod/body-contains data we provided i.e id    verify the token
-    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiIxMjM0YXNkZSIsImlhdCI6MTU4Mzg0ODAyNn0.iteByHEM1YcIXRMeLlHr2568N8Pqla95G5ZDwdQgYHY
-
-    const data = await jwt.verify(token, 'thisismytoken')
-    console.log(data)
-
-
+const pet = {
+    name: "joe"
 }
 
-myFunction()
+pet.toJSON = function () {
+    console.log(this)
+    return this
+}
+
+
+console.log(JSON.stringify(pet))
