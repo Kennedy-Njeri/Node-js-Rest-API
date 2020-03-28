@@ -116,7 +116,7 @@ router.get('/users/me', auth, async (req, res) => {
 // })
 
 
-router.patch('/users/:id', async (req, res) => {
+router.patch('/users/me', auth, async (req, res) => {
     // convert an object to an array of its properties string
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'email', 'password', 'age']
@@ -130,20 +130,17 @@ router.patch('/users/:id', async (req, res) => {
 
     try {
         //const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
-        const user = await User.findById(req.params.id)
+        // const user = await User.findById(req.params.id)
 
         updates.forEach((update) => {
-           return user[update] = req.body[update]
+           return req.user[update] = req.body[update]
         })
 
         // where our middleware is being executed
-        await user.save()
+        await req.user.save()
 
-        if (!user) {
-            return res.status(404).send()
-        }
 
-        res.send(user)
+        res.send(req.user)
     } catch (e) {
         res.status(400).send(e)
     }
