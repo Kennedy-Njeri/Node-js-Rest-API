@@ -74,14 +74,32 @@ app.listen(port, () => {
 //
 // myFunction()
 
-const pet = {
-    name: "joe"
+// const pet = {
+//     name: "joe"
+// }
+//
+// pet.toJSON = function () {
+//     console.log(this)
+//     return this
+// }
+//
+//
+// console.log(JSON.stringify(pet))
+
+const Task = require('./models/task')
+const User = require('./models/user')
+
+const main = async () => {
+    // const task = await Task.findById('5e7f73ab41f1d22493434a07')
+    // // find user associated with the task
+    // await task.populate('owner').execPopulate()
+    // //return task
+    // console.log(task.owner)
+    const user = await User.findById('5e7f725aaa951f2480a58015')
+    await user.populate('tasks').execPopulate()
+    console.log(user.tasks)
+
 }
 
-pet.toJSON = function () {
-    console.log(this)
-    return this
-}
 
-
-console.log(JSON.stringify(pet))
+main();
