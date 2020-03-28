@@ -86,33 +86,34 @@ router.get('/users/me', auth, async (req, res) => {
     // })
 })
 
-router.get('/users/:id', async (req, res) => {
-
-    const _id = req.params.id
-
-    try {
-        const user = await User.findById(_id)
-        if (!user) {
-            return res.status(404).send()
-        }
-        res.send(user)
-    } catch (e) {
-        res.status(500).send()
-    }
-
-    // User.findById(_id).then(user => {
-    //     if (!user) {
-    //        return res.status(404).send()
-    //     }
-    //
-    //     res.send(user)
-    // }).catch(error => {
-    //     res.status(404).send()
-    // })
-
-    console.log(req.params)
-
-})
+// we dont need it as we have the user profile
+// router.get('/users/:id', async (req, res) => {
+//
+//     const _id = req.params.id
+//
+//     try {
+//         const user = await User.findById(_id)
+//         if (!user) {
+//             return res.status(404).send()
+//         }
+//         res.send(user)
+//     } catch (e) {
+//         res.status(500).send()
+//     }
+//
+//     // User.findById(_id).then(user => {
+//     //     if (!user) {
+//     //        return res.status(404).send()
+//     //     }
+//     //
+//     //     res.send(user)
+//     // }).catch(error => {
+//     //     res.status(404).send()
+//     // })
+//
+//     console.log(req.params)
+//
+// })
 
 
 router.patch('/users/:id', async (req, res) => {
