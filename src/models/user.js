@@ -48,7 +48,9 @@ const userSchema = new mongoose.Schema({
         trim: true,
         minlength: 7
 
-    }})
+    }}, {
+    timestamps: true
+})
 
 // create a user to task relationship
 // local field - owner stored in task is related to the user _id
