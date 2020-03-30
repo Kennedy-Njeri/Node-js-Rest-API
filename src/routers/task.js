@@ -29,6 +29,7 @@ router.post('/tasks', auth, async (req, res) => {
     // })
 })
 
+
 // GET /tasks?completed=true
 // GET /tasks?limit=1
 // GET /tasks?sortBy=createdAt:desc
@@ -72,6 +73,7 @@ router.get('/tasks', auth, async (req, res) => {
     // })
 })
 
+
 router.get('/tasks/:id', auth, async (req, res) => {
     //const _id = req.params.id
 
@@ -98,6 +100,7 @@ router.get('/tasks/:id', auth, async (req, res) => {
     //     res.status(500).send()
     // })
 })
+
 
 router.patch('/tasks/:id', auth, async (req, res) => {
     // convert an object to an array of its properties
