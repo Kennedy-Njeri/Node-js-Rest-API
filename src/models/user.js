@@ -52,6 +52,8 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 })
 
+
+
 // create a user to task relationship
 // local field - owner stored in task is related to the user _id
 userSchema.virtual('tasks', {
@@ -59,7 +61,6 @@ userSchema.virtual('tasks', {
     localField: '_id',
     foreignField: 'owner'
 })
-
 
 
 // JSON.stringify is run in the background, our objects are stringify
@@ -76,7 +77,6 @@ userSchema.methods.toJSON = function () {
 }
 
 
-
 // method are accessed by instances
 userSchema.methods.generateAuthToken = async function () {
 
@@ -89,6 +89,7 @@ userSchema.methods.generateAuthToken = async function () {
     return token
 
 }
+
 
 // statics are accessed by our models/ model methods // allow for defining functions that exist directly on your Model
 userSchema.statics.findBycredentials = async (email, password) => {
