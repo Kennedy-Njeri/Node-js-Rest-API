@@ -25,6 +25,22 @@ const port = process.env.PORT || 3000
 //     // next()
 // })
 
+// use of multer lib for images
+const multer = require('multer')
+const upload = multer({
+    dest: 'images'
+})
+
+app.post('/upload', upload.single('upload'), (req, res) => {
+    res.send()
+})
+
+
+
+
+
+
+
 
 // https://httpstatuses.com/
 // parse our incoming json data for use into an object
@@ -88,20 +104,20 @@ app.listen(port, () => {
 
 
 
-const Task = require('./models/task')
-const User = require('./models/user')
-
-const main = async () => {
-    // const task = await Task.findById('5e7f73ab41f1d22493434a07')
-    // // find user associated with the task
-    // await task.populate('owner').execPopulate()
-    // //return task
-    // console.log(task.owner)
-    const user = await User.findById('5e7f725aaa951f2480a58015')
-    await user.populate('tasks').execPopulate()
-    console.log(user.tasks)
-
-}
-
-
-main();
+// const Task = require('./models/task')
+// const User = require('./models/user')
+//
+// const main = async () => {
+//     // const task = await Task.findById('5e7f73ab41f1d22493434a07')
+//     // // find user associated with the task
+//     // await task.populate('owner').execPopulate()
+//     // //return task
+//     // console.log(task.owner)
+//     const user = await User.findById('5e7f725aaa951f2480a58015')
+//     await user.populate('tasks').execPopulate()
+//     console.log(user.tasks)
+//
+// }
+//
+//
+// main();
