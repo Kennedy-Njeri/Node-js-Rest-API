@@ -37,6 +37,9 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     }],
+    avatar: {
+        type: Buffer
+    },
     password: {
         type: String,
         required: true,
