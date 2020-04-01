@@ -3,6 +3,7 @@ const User = require('../models/user')
 const router = new express.Router()
 const auth = require('../middleware/auth')
 const multer = require('multer')
+const sharp = require('sharp')
 
 
 
@@ -187,9 +188,11 @@ const upload = multer({
     }
 })
 
-
+// sharp used to modify the image we upload
 router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) => {
-    req.user.avatar = req.file.buffer
+    // buffer -  the modified image by sharp
+    const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer()
+    req.user.avatar = buffer
     await req.user.save()
     res.send()
 }, (error, req, res, next) => {
@@ -202,6 +205,8 @@ router.delete('/users/me/avatar', auth, async (req, res) => {
     res.send()
 })
 
+
+// go to http://localhost:3000/users/5e807969fb37382a5e97f031/avatar in browser to access the image
 router.get('/users/:id/avatar', async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
@@ -210,7 +215,7 @@ router.get('/users/:id/avatar', async (req, res) => {
             throw new Error()
         }
 
-        res.set('Content-Type', 'image/jpg')
+        res.set('Content-Type', 'image/png')
         res.send(user.avatar)
 
     } catch (e) {

@@ -26,33 +26,33 @@ const port = process.env.PORT || 3000
 // })
 
 // use of multer lib for images
-const multer = require('multer')
-const upload = multer({
-    dest: 'images',
-    limits: {
-        fileSize: 1000000
-    },
-    fileFilter(req, file, cb) {
-        // !file.originalname.endsWith('.pdf')
-        if (!file.originalname.match(/\.(doc|docx)$/)) {
-            return cb(new Error('Please upload a Word document'))
-        }
-
-        cb(undefined, true)
-
-        // cb(new Error('File must be a PDF'))
-        // cb(undefined, true)
-        // cb(undefined, false)
-    }
-})
-
-
-// also handling errors without html
-app.post('/upload', upload.single('upload'), (req, res) => {
-    res.send()
-}, (error, req, res, next) => {
-    res.status(400).send({ error: error.message })
-})
+// const multer = require('multer')
+// const upload = multer({
+//     dest: 'images',
+//     limits: {
+//         fileSize: 1000000
+//     },
+//     fileFilter(req, file, cb) {
+//         // !file.originalname.endsWith('.pdf')
+//         if (!file.originalname.match(/\.(doc|docx)$/)) {
+//             return cb(new Error('Please upload a Word document'))
+//         }
+//
+//         cb(undefined, true)
+//
+//         // cb(new Error('File must be a PDF'))
+//         // cb(undefined, true)
+//         // cb(undefined, false)
+//     }
+// })
+//
+//
+// // also handling errors without html
+// app.post('/upload', upload.single('upload'), (req, res) => {
+//     res.send()
+// }, (error, req, res, next) => {
+//     res.status(400).send({ error: error.message })
+// })
 
 
 
