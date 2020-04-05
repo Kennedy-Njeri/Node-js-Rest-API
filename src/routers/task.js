@@ -39,6 +39,7 @@ router.get('/tasks', auth, async (req, res) => {
 
     // filter data
     if (req.query.completed) {
+        // convert the req.query.completed must be converted to a boolean value since it returns a string
         match.completed = req.query.completed === 'true'
     }
 
@@ -57,7 +58,7 @@ router.get('/tasks', auth, async (req, res) => {
             options: {
                 limit: parseInt(req.query.limit),
                 skip: parseInt(req.query.skip),
-                // short hand syntax
+                // property short hand syntax
                 sort
             }
         }).execPopulate()
@@ -115,6 +116,7 @@ router.patch('/tasks/:id', auth, async (req, res) => {
     }
 
     try {
+        // find by update bypasses mongoose hence providing a direct operation(that is why we set run validators)
         //const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
 
         //const task = await Task.findById(req.params.id)

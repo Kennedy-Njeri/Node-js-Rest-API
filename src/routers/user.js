@@ -37,7 +37,7 @@ router.post('/users/login', async (req, res) => {
         const token = await user.generateAuthToken()
         // we are supposed to hide hashed password and tokens
         //res.send({user: user.getPublicProfile(), token}) but instead we use toJSON
-        // when we send an object to res.send it is stringified
+        // when we send an object to res.send it is stringified behind the scenes
         res.send({user, token})
 
     } catch (e) {
@@ -141,7 +141,7 @@ router.patch('/users/me', auth, async (req, res) => {
            return req.user[update] = req.body[update]
         })
 
-        // where our middleware is being executed
+        // where our middleware "save" is being executed
         await req.user.save()
 
 
