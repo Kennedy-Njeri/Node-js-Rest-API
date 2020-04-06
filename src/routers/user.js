@@ -7,9 +7,9 @@ const sharp = require('sharp')
 
 
 
-router.get('/test', (req, res) => {
-    res.send("This is a test")
-})
+// router.get('/test', (req, res) => {
+//     res.send("This is a test")
+// })
 
 
 router.post('/users', async (req, res) => {
