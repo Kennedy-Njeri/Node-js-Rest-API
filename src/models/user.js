@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Task = require('./task')
 
+
+
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -54,7 +56,6 @@ const userSchema = new mongoose.Schema({
     }}, {
     timestamps: true
 })
-
 
 
 // create a user to task relationship
