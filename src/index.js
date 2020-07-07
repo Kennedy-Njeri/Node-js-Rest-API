@@ -82,6 +82,7 @@ app.listen(port, () => {
 
 
 
+
 // hashing algorithms you cant reverse the process - one way,  with encryption algorithms one can get the original value
 
 // const bycrypt = require('bcryptjs')
@@ -148,3 +149,5 @@ app.listen(port, () => {
 //
 //
 // main();
+
+
