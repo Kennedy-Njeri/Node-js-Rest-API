@@ -44,6 +44,11 @@ test('Sum of two numbers', (done) => {
     })
 })
 
+test('Sum of two numbers', async () => {
+    const sum = await add(2,3)
+    expect(sum).toBe(5)
+})
+
 
 
 
