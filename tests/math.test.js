@@ -21,8 +21,9 @@ test('should convert 32 F to 0 c', () => {
 })
 
 
-test('should convert 0 c to 0 c', () => {
-
+test('should convert 0 c to 32 F', () => {
+    const temp = celciusToFarenheight(0)
+    expect(temp).toBe(32)
 })
 
 
