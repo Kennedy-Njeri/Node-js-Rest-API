@@ -15,13 +15,6 @@ test('Should calculate total with default tip', () => {
 })
 
 
-const fahrenheightToCelsius = (temp) => {
-    return (temp - 32) / 1.8
-}
-
-const celciusToFarenheight = (temp) => {
-    return (temp * 1.8) + 32
-}
 
 
 
