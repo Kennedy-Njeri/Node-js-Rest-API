@@ -1,4 +1,4 @@
-const { calcilateTip } = require('../src/calc')
+const { calcilateTip, celciusToFarenheight, fahrenheightToCelsius } = require('../src/calc')
 
 test('should calculate total with tip', () => {
     const total = calcilateTip(10, .3)
@@ -15,6 +15,15 @@ test('Should calculate total with default tip', () => {
 })
 
 
+test('should convert 32 F to 0 c', () => {
+    const temp = fahrenheightToCelsius(32)
+    expect(temp).toBe(0)
+})
+
+
+test('should convert 0 c to 0 c', () => {
+
+})
 
 
 

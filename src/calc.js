@@ -15,5 +15,5 @@ const celciusToFarenheight = (temp) => {
 
 
 module.exports = {
-    calcilateTip
+    calcilateTip, fahrenheightToCelsius, celciusToFarenheight
 }
