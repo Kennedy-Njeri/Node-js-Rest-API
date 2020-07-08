@@ -1,4 +1,4 @@
-const { calcilateTip, celciusToFarenheight, fahrenheightToCelsius } = require('../src/calc')
+const { calcilateTip, celciusToFarenheight, fahrenheightToCelsius, add } = require('../src/calc')
 
 test('should calculate total with tip', () => {
     const total = calcilateTip(10, .3)
@@ -25,6 +25,26 @@ test('should convert 0 c to 32 F', () => {
     const temp = celciusToFarenheight(0)
     expect(temp).toBe(32)
 })
+
+
+// test('Async func test', (done) => {
+//     setTimeout(() => {
+//         expect(1).toBe(2)
+//         done()
+//     }, 2000)
+// })
+
+
+// testing asynchronous func
+
+test('Sum of two numbers', (done) => {
+    add(4, 5).then((sum) => {
+        expect(sum).toBe(9)
+        done()
+    })
+})
+
+
 
 
 
