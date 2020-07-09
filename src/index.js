@@ -1,12 +1,18 @@
-const express = require('express')
-require('./db/mongoose')
-const userRouter = require('./routers/user')
-const taskRouter = require('./routers/task')
+const app = require('./app')
 
 
 
 
-const app = express()
+
+//const express = require('express')
+// require('./db/mongoose')
+// const userRouter = require('./routers/user')
+// const taskRouter = require('./routers/task')
+
+
+
+
+//const app = express()
 const port = process.env.PORT
 
 
@@ -67,10 +73,10 @@ const port = process.env.PORT
 
 // https://httpstatuses.com/
 // parse our incoming json data for use into an object
-app.use(express.json())
+//app.use(express.json())
 
 
-app.use(userRouter, taskRouter)
+//app.use(userRouter, taskRouter)
 
 
 
