@@ -23,3 +23,18 @@ test('Should sign up user', async () => {
         password: 'MyPass2020!'
     }).expect(201)
 })
+
+test('Should login existing user', async () => {
+    await request(app).post('/users/login').send({
+        email: userOne.email,
+        password: userOne.password
+    }).expect(200)
+})
+
+
+test('Should not login nonexistent user', async () => {
+    await request(app).post('/users/login').send({
+        email: userOne.email,
+        password: 'theisnotmypass'
+    }).expect(400)
+})
