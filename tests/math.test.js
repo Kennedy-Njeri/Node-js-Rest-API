@@ -1,5 +1,7 @@
 const { calcilateTip, celciusToFarenheight, fahrenheightToCelsius, add } = require('../src/calc')
 
+
+
 test('should calculate total with tip', () => {
     const total = calcilateTip(10, .3)
     expect(total).toBe(13)
