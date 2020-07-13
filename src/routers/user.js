@@ -7,6 +7,7 @@ const sharp = require('sharp')
 
 
 
+
 // router.get('/test', (req, res) => {
 //     res.send("This is a test")
 // })
@@ -119,6 +120,7 @@ router.get('/users/me', auth, async (req, res) => {
 //     console.log(req.params)
 //
 // })
+
 
 
 router.patch('/users/me', auth, async (req, res) => {
