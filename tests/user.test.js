@@ -3,7 +3,6 @@ const app = require('../src/app')
 const User = require('../src/models/user')
 
 
-
 const userOne = {
     name: 'Lebron',
     email: 'lebron@gmail.com',
@@ -12,7 +11,9 @@ const userOne = {
 
 
 beforeEach(async () => {
+    // deletes all users b4 all user test cases are run
     await User.deleteMany()
+    // ensure we have data for testing e.g logging in
     await new User(userOne).save()
 })
 
