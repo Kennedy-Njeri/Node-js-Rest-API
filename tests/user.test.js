@@ -49,3 +49,19 @@ test('Should not login nonexistent user', async () => {
         password: 'theisnotmypass'
     }).expect(400)
 })
+
+
+test('should get profile for user', async () => {
+    await request(app)
+        .get('/users/me')
+        .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+        .send()
+        .expect(200)
+})
+
+test('should not get profile for unauthenticated', async () => {
+    await request(app)
+        .get('/users/me')
+        .send()
+        .expect(401)
+})
