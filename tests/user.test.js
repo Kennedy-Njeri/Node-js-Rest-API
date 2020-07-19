@@ -91,6 +91,10 @@ test('should delete account for user', async () => {
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .send()
         .expect(200)
+
+    // test user to beNull
+    const user = await User.findById(userOneId)
+    expect(user).toBeNull()
 })
 
 
