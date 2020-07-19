@@ -47,6 +47,7 @@ test('Should sign up user', async () => {
         },
         token: user.tokens[0].token
     })
+    expect(user.password).not.toBe('MyPass2020!')
 })
 
 test('Should login existing user', async () => {
