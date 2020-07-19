@@ -28,11 +28,16 @@ beforeEach(async () => {
 
 
 test('Should sign up user', async () => {
-    await request(app).post('/users').send({
+    const response = await request(app).post('/users').send({
         name: 'Vincent',
         email: 'vincent@gmail.com',
         password: 'MyPass2020!'
     }).expect(201)
+
+    //grab the user saved in the database // confirm user is saved in the db
+    const user = await User.findById(response.body.user._id)
+    expect(user).not.toBeNull()
+
 })
 
 test('Should login existing user', async () => {
