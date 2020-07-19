@@ -38,6 +38,15 @@ test('Should sign up user', async () => {
     const user = await User.findById(response.body.user._id)
     expect(user).not.toBeNull()
 
+
+    // assert the data response
+    expect(response.body).toMatchObject({
+        user: {
+            name: 'Vincent',
+            email: 'vincent@gmail.com'
+        },
+        token: user.tokens[0].token
+    })
 })
 
 test('Should login existing user', async () => {
