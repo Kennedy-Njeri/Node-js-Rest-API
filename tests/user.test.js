@@ -50,11 +50,14 @@ test('Should sign up user', async () => {
     expect(user.password).not.toBe('MyPass2020!')
 })
 
+
 test('Should login existing user', async () => {
-    await request(app).post('/users/login').send({
+    const response = await request(app).post('/users/login').send({
         email: userOne.email,
         password: userOne.password
     }).expect(200)
+    const  user = await User.findById(userOneId)
+    expect(response.body.token).toBe(user.tokens[1].token)
 })
 
 
