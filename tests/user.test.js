@@ -130,4 +130,7 @@ test('Should update valid user fields', async () => {
             name: 'Kevin durant'
         })
         .expect(200)
+
+    const user = await User.findById(userOneId)
+    expect(user.name).toEqual('Kevin durant')
 })
