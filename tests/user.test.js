@@ -113,4 +113,10 @@ test('should upload avatar image', async () => {
         .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
         .attach('avatar', 'tests/fixtures/profile-pic.jpg')
         .expect(200)
+
+    const user = await User.findById(userOneId)
+
+    // in this case when comparing objects we user toEqual
+    // objects are not equal {} === {} toBe users a ===
+    expect(user.avatar).toEqual(expect.any(Buffer))
 })
