@@ -134,3 +134,15 @@ test('Should update valid user fields', async () => {
     const user = await User.findById(userOneId)
     expect(user.name).toEqual('Kevin durant')
 })
+
+
+test('Should not invalid user fields', async () => {
+    await request(app)
+        .patch('/users/me')
+        .set('Authorization', `Bearer ${userOne.tokens[0].token}`)
+        .send({
+            location: 'Nairobi'
+        })
+        .expect(400)
+
+})
