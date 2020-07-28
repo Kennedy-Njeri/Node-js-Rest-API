@@ -4,8 +4,6 @@ const User = require('../src/models/user')
 const { userOne, userOneId, setupDatabase} = require('./fixtures/db')
 
 
-
-
 beforeEach(setupDatabase)
 
 
